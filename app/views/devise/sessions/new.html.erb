@@ -1,8 +1,12 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <%#= render "devise/shared/error_messages", resource: resource %>
       <h2>Log in</h2>
-      <%= form_with model: @user, url: new_user_session_path(resource_name), local: true do |f| %>
+      <%#= form_with model: @user, url: new_user_session_path(resource_name, format: :html), local: true do |f| %>
+      <%= form_with model: @user, url: new_user_session_path do |f| %>
+      <!--local: trueとnewを外している-->
+      <%#= render "devise/shared/error_messages", resource: resource %>
         <div class="field">
           <%= f.label :name %><br />
           <%= f.text_field :name, autofocus: true, class: "name" %>
