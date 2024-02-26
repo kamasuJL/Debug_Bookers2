@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
     resource :favorite, only: [:create, :destroy]
   end
-  resources :users, only: [:index,:show,:edit,:update,:create,:new]
+  resources :users, only: [:index,:show,:edit,:update,:create,:new] do
+    resource :relationships, only: [:create, :destroy]
+    get 'following' => 'relationships#following', as: 'following'
+    get 'followeds' => 'relationships#followeds', as: 'followeds'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
